@@ -1260,7 +1260,6 @@ GameObject:
   - component: {fileID: 871058686}
   - component: {fileID: 871058685}
   - component: {fileID: 871058687}
-  - component: {fileID: 871058688}
   - component: {fileID: 871058689}
   m_Layer: 0
   m_Name: 1
@@ -1348,7 +1347,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -1363,31 +1362,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!233 &871058688
-HingeJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871058684}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_BreakAction: 3
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0.24530774, y: -9.812298}
-  m_ConnectedAnchor: {x: -1.8018769, y: 5.875081}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 0
-  m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
 --- !u!114 &871058689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1400,7 +1374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca67c48a8615a644bbd7fc1d239fdd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2000
+  speed: 20
+  rotSpeed: 1
 --- !u!1 &872880178
 GameObject:
   m_ObjectHideFlags: 0
