@@ -35,4 +35,10 @@ public class GameInput : MonoBehaviour
     }
 
 
+    public float GetSpaceshipRotation()
+    {
+        return playerInputAction.Spaceship.Rotate.ReadValue<float>();
+    }
+
+
 }

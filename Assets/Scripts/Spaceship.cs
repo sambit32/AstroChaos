@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class Spaceship : MonoBehaviour
     
 
     public float speed = 100f;
+    public float rotSpeed = 180f;
     void Start()
     {
         gameInput = GameInput.Instance;
@@ -21,6 +23,16 @@ public class Spaceship : MonoBehaviour
     void Update()
     {
         HandleMovement();
+        HandleRotation();
+    }
+
+    private void HandleRotation()
+    {
+        Quaternion rot = transform.rotation;
+        float z = rot.eulerAngles.z;
+        z += gameInput.GetSpaceshipRotation() * rotSpeed * Time.deltaTime;
+        rot = Quaternion.Euler(0, 0, z);
+        transform.rotation = rot;
     }
 
     private void HandleMovement()
