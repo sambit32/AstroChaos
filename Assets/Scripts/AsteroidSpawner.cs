@@ -28,11 +28,11 @@ public class AsteroidSpawner : MonoBehaviour
             nextSpawnTime = Time.time + spawnInterval;
         }
 
-        if (Time.time >= nextRotationTime)
-        {
-            RotateSpawner();
-            nextRotationTime = Time.time + rotationInterval;
-        }
+        // if (Time.time >= nextRotationTime)
+        // {
+        //     RotateSpawner();
+        //     nextRotationTime = Time.time + rotationInterval;
+        // }
     }
 
     void SpawnAsteroid()
