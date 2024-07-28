@@ -3,7 +3,9 @@ guid: a7e879d534874cf4c86cee74ba3bf5e9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - destroyer: {instanceID: 0}
+  - expolFX: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
