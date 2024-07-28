@@ -7,6 +7,7 @@ TagManager:
   - Distroyer
   - Astronaut
   - Spaceship
+  - Astroid
   layers:
   - Default
   - TransparentFX

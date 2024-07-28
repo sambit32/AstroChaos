@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
-public class Spaceship : MonoBehaviour
+public class Spaceship : MonoBehaviour, IDamagable
 {
     //private Animator animator;
     private GameInput gameInput;
@@ -38,5 +39,10 @@ public class Spaceship : MonoBehaviour
         Vector2 movedir = gameInput.GetSpaceshipMovementVectorNormalised();
         Vector2 velocity = transform.up * movedir.y * speed * Time.deltaTime;
         rb.velocity = velocity;
+    }
+
+    public void Damage(float damageAmount)
+    {
+        Astronaut.currentHealth -= damageAmount;
     }
 }
