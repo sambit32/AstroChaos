@@ -35,6 +35,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""60a38103-a995-47e0-9fc9-2dc99c968257"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -101,6 +110,28 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26494602-7fe6-4ebe-a8e0-c4faea6e7b60"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba6642de-61e7-404b-9aae-792a5e19fd32"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -808,6 +839,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         // Astronaut
         m_Astronaut = asset.FindActionMap("Astronaut", throwIfNotFound: true);
         m_Astronaut_Move = m_Astronaut.FindAction("Move", throwIfNotFound: true);
+        m_Astronaut_Shoot = m_Astronaut.FindAction("Shoot", throwIfNotFound: true);
         // Spaceship
         m_Spaceship = asset.FindActionMap("Spaceship", throwIfNotFound: true);
         m_Spaceship_Move = m_Spaceship.FindAction("Move", throwIfNotFound: true);
@@ -886,11 +918,13 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Astronaut;
     private List<IAstronautActions> m_AstronautActionsCallbackInterfaces = new List<IAstronautActions>();
     private readonly InputAction m_Astronaut_Move;
+    private readonly InputAction m_Astronaut_Shoot;
     public struct AstronautActions
     {
         private @PlayerInputAction m_Wrapper;
         public AstronautActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Astronaut_Move;
+        public InputAction @Shoot => m_Wrapper.m_Astronaut_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Astronaut; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -903,6 +937,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         private void UnregisterCallbacks(IAstronautActions instance)
@@ -910,6 +947,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         public void RemoveCallbacks(IAstronautActions instance)
@@ -1102,6 +1142,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     public interface IAstronautActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
     public interface ISpaceshipActions
     {

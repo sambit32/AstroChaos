@@ -199,7 +199,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.95051455, y: 0.00000027996686}
+  m_ConnectedAnchor: {x: 0.9505155, y: 0.00000027996688}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -335,7 +335,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.21303505, y: -12.00337}
+  m_ConnectedAnchor: {x: 0.21303505, y: -12.003369}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1473,7 +1473,7 @@ GameObject:
   - component: {fileID: 871058689}
   - component: {fileID: 871058690}
   m_Layer: 0
-  m_Name: 1
+  m_Name: Spaceship
   m_TagString: Spaceship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1540,7 +1540,7 @@ Transform:
   m_GameObject: {fileID: 871058684}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9, y: 9.8, z: 0}
+  m_LocalPosition: {x: -1.9, y: -5.5, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1604,7 +1604,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.11143738, y: -11.366588}
-  m_ConnectedAnchor: {x: -1.944575, y: 5.253365}
+  m_ConnectedAnchor: {x: -1.944575, y: -10.046635}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1689,7 +1689,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.93354344, y: 0.0000005176435}
+  m_ConnectedAnchor: {x: 0.93354297, y: 0.0000005176435}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1890,7 +1890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6061042130904828141, guid: 3a31ceaaa7dabdd439cc8f2862a40ffc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2154,7 +2154,7 @@ Transform:
   m_GameObject: {fileID: 977747809}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.89, y: -4.5, z: 0}
+  m_LocalPosition: {x: -1.89, y: -19.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2177,6 +2177,8 @@ MonoBehaviour:
   maxHealth: 50
   speed: 2000
   VirtualMouse: {fileID: 1121923289}
+  bulletPrefab: {fileID: 0}
+  bulletSpawner: {fileID: 0}
 --- !u!50 &977747814
 Rigidbody2D:
   serializedVersion: 4
@@ -2220,7 +2222,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.044300318, y: -0.31200695}
-  m_ConnectedAnchor: {x: 0.62727237, y: -0.04321961}
+  m_ConnectedAnchor: {x: 0.6272714, y: -0.043219592}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3083,7 +3085,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.8663125, y: -0.00000061467273}
+  m_ConnectedAnchor: {x: 0.86631346, y: -0.0000005774199}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
