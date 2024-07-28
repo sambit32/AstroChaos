@@ -11,6 +11,7 @@ public class Astronaut : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     public float speed = 5f;
+    public Transform VirtualMouse;
     void Start()
     {
         gameInput = GameInput.Instance;
@@ -23,7 +24,10 @@ public class Astronaut : MonoBehaviour
     void Update()
     {
         HandleMovement();
+        Debug.Log($"Mouse Position : {Input.mousePosition}");
+        //transform.LookAt(VirtualMouse);
     }
+
 
     private void HandleMovement()
     {

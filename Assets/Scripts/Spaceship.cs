@@ -39,7 +39,7 @@ public class Spaceship : MonoBehaviour
     {
         Quaternion rot = transform.rotation;
         float z = rot.eulerAngles.z;
-        z += gameInput.GetSpaceshipRotation() * rotSpeed * Time.deltaTime;
+        z -= gameInput.GetSpaceshipRotation() * rotSpeed * Time.deltaTime;
         rot = Quaternion.Euler(0, 0, z);
         transform.rotation = rot;
 
