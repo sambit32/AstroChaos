@@ -10,6 +10,7 @@ public class GameInput : MonoBehaviour
 
 
     public event EventHandler OnDeviceChanged;
+    public event EventHandler OnShootAction;
 
     // Start is called before the first frame update
 
@@ -25,6 +26,12 @@ public class GameInput : MonoBehaviour
 
         playerInputAction.Astronaut.Enable();
         playerInputAction.Spaceship.Enable();
+        playerInputAction.Astronaut.Shoot.performed += Shoot_performed;
+    }
+
+    private void Shoot_performed(InputAction.CallbackContext obj)
+    {
+        OnShootAction?.Invoke(this,EventArgs.Empty);
     }
 
     private void InputSystem_onActionChange(object arg1, InputActionChange inputActionChange)
