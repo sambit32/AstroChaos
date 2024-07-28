@@ -12,13 +12,22 @@ public class Bullet : MonoBehaviour
     public float speed = 10f;
     private Vector2 moveDirection;
 
-    private void OnCollisionEnter(Collision other) {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        IDamagable damageAble = collision.gameObject.GetComponentInParent<IDamagable>();
+        if (damageAble != null && collision.gameObject.tag == "Astroid")
+        {
+            damageAble.Damage(damageAmount);
+        }
+        Destroy(gameObject);
+    }
+    /*private void OnCollisionEnter(Collision other) {
         IDamagable damageAble = other.gameObject.GetComponentInParent<IDamagable>();
         if(damageAble != null && other.gameObject.tag == "Astroid"){
             damageAble.Damage(damageAmount);
         }
         Destroy(gameObject);
-    }
+    }*/
     public void SetMoveDirection(Vector2 direction)
     {
         moveDirection = direction.normalized * speed;
