@@ -1586,7 +1586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca67c48a8615a644bbd7fc1d239fdd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 1000
   rotSpeed: 30
 --- !u!233 &871058690
 HingeJoint2D:
@@ -1887,6 +1887,10 @@ PrefabInstance:
     - target: {fileID: 6061042130904828141, guid: 3a31ceaaa7dabdd439cc8f2862a40ffc, type: 3}
       propertyPath: m_Name
       value: AstroidSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 6061042130904828141, guid: 3a31ceaaa7dabdd439cc8f2862a40ffc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

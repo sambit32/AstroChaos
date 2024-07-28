@@ -23,33 +23,20 @@ public class Spaceship : MonoBehaviour
     void Update()
     {
         HandleMovement();
-        //HandleRotation();
+        HandleRotation();
     }
 
     private void HandleRotation()
     {
-        Quaternion rot = transform.rotation;
-        float z = rot.eulerAngles.z;
-        z += gameInput.GetSpaceshipRotation() * rotSpeed * Time.deltaTime;
-        rot = Quaternion.Euler(0, 0, z);
-        transform.rotation = rot;
+        float rotationInput = gameInput.GetSpaceshipRotation();
+        float rotationAmount = rotationInput * rotSpeed * Time.deltaTime;
+        rb.rotation -= rotationAmount;
     }
 
     private void HandleMovement()
     {
-        Quaternion rot = transform.rotation;
-        float z = rot.eulerAngles.z;
-        z -= gameInput.GetSpaceshipRotation() * rotSpeed * Time.deltaTime;
-        rot = Quaternion.Euler(0, 0, z);
-        transform.rotation = rot;
-
         Vector2 movedir = gameInput.GetSpaceshipMovementVectorNormalised();
-        Vector3 pos = transform.position;
-        Vector3 velocity = new Vector3(0, movedir.y * speed * Time.deltaTime, 0);
-
-        pos += rot * velocity;
-        transform.position = pos;
-        /*Debug.Log(movedir);
-        rb.velocity = new Vector2(movedir.x * speed * Time.deltaTime, movedir.y * speed * Time.deltaTime);*/
+        Vector2 velocity = transform.up * movedir.y * speed * Time.deltaTime;
+        rb.velocity = velocity;
     }
 }
