@@ -15,6 +15,9 @@ public class Astronaut : MonoBehaviour, IDamagable
     public float speed = 5f;
     public static float currentHealth;
     public RectTransform VirtualMouse;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawner;
+
     void Start()
     {
         gameInput = GameInput.Instance;
@@ -67,5 +70,22 @@ public class Astronaut : MonoBehaviour, IDamagable
     public void Damage(float damageAmount)
     {
         currentHealth -= damageAmount;
+    }
+
+    void Shoot()
+    {
+        // Convert the cursor position from screen space to world space
+        Vector3 cursorWorldPosition = Camera.main.ScreenToWorldPoint(VirtualMouse.position);
+        cursorWorldPosition.z = 0; // Ensure the position is only in the 2D plane
+
+        // Instantiate the bullet at the bullet spawner's position
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawner.position, Quaternion.identity);
+
+        // Get the direction from the bullet spawner to the cursor
+        Vector3 direction = cursorWorldPosition - bulletSpawner.position;
+        direction.z = 0; // Ensure the direction is only in the 2D plane
+
+        // Set the bullet's move direction
+        bullet.GetComponent<Bullet>().SetMoveDirection(direction);
     }
 }
