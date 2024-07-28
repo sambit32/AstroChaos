@@ -25,7 +25,6 @@ public class Astronaut : MonoBehaviour
     {
         HandleMovement();
         Debug.Log($"Mouse Position : {Input.mousePosition}");
-        //transform.LookAt(VirtualMouse);
     }
 
 
