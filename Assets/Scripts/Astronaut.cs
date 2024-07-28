@@ -25,7 +25,15 @@ public class Astronaut : MonoBehaviour, IDamagable
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
+
+        gameInput.OnShootAction += GameInput_OnShootAction;
     }
+
+    private void GameInput_OnShootAction(object sender, EventArgs e)
+    {
+        Shoot();
+    }
+
     private void Update() {
      if(currentHealth<=0){
         Destroy(gameObject);
@@ -56,8 +64,17 @@ public class Astronaut : MonoBehaviour, IDamagable
     }
     private void AimRoation(){
 
-        Vector3 cursorWorldPosition = Camera.main.ScreenToWorldPoint(VirtualMouse.position);
-        cursorWorldPosition.z = 0; 
+        Vector3 cursorWorldPosition;
+        if (gameInput.GetActiveGameDevice() == GameInput.GameDevice.Gamepad)
+        {
+            cursorWorldPosition = Camera.main.ScreenToWorldPoint(VirtualMouse.position);
+            cursorWorldPosition.z = 0;
+        }
+        else
+        {
+            cursorWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            cursorWorldPosition.z = 0;
+        } 
         Vector3 direction = cursorWorldPosition - transform.position;
         direction.z = 0; 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -74,9 +91,17 @@ public class Astronaut : MonoBehaviour, IDamagable
 
     void Shoot()
     {
-        // Convert the cursor position from screen space to world space
-        Vector3 cursorWorldPosition = Camera.main.ScreenToWorldPoint(VirtualMouse.position);
-        cursorWorldPosition.z = 0; // Ensure the position is only in the 2D plane
+        Vector3 cursorWorldPosition;
+        if (gameInput.GetActiveGameDevice() == GameInput.GameDevice.Gamepad)
+        {
+            cursorWorldPosition = Camera.main.ScreenToWorldPoint(VirtualMouse.position);
+            cursorWorldPosition.z = 0;
+        }
+        else
+        {
+            cursorWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            cursorWorldPosition.z = 0;
+        }
 
         // Instantiate the bullet at the bullet spawner's position
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawner.position, Quaternion.identity);

@@ -1890,7 +1890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6061042130904828141, guid: 3a31ceaaa7dabdd439cc8f2862a40ffc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2177,6 +2177,8 @@ MonoBehaviour:
   maxHealth: 50
   speed: 2000
   VirtualMouse: {fileID: 1121923289}
+  bulletPrefab: {fileID: 7855781933573285901, guid: 144da879394721840ace86b251b7a58a, type: 3}
+  bulletSpawner: {fileID: 2008964739}
 --- !u!50 &977747814
 Rigidbody2D:
   serializedVersion: 4
