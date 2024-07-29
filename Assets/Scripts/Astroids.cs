@@ -4,6 +4,8 @@ public class Astroids : MonoBehaviour, IDamagable
 {
     public Transform destroyer;
     public GameObject expolFX;
+    public GameObject[] powerUps;
+
     public float maxHealth = 50;
     public float damageAmount = 33.33f;
     float currentHealth;
@@ -44,5 +46,10 @@ public class Astroids : MonoBehaviour, IDamagable
 
         // Apply the velocity to move the asteroid towards the center
         rb.velocity = moveDirection * fallSpeed;
+    }
+
+    public void SpawnPowerUps(){
+        Bullets_PowerUp powerUp = Instantiate(powerUps[Random.Range(0, powerUps.Length)], transform.position, Quaternion.identity).GetComponent<Bullets_PowerUp>();
+        powerUp.destroyer = destroyer;
     }
 }

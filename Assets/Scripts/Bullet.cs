@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour
         IDamagable damageAble = collision.gameObject.GetComponentInParent<IDamagable>();
         if (damageAble != null && collision.gameObject.tag == "Astroid")
         {
+            Astroids astroids = collision.gameObject.GetComponent<Astroids>();
+            astroids.SpawnPowerUps();
             damageAble.Damage(damageAmount);
             GameObject explo = Instantiate(expolFX, transform.position, Quaternion.identity);
             Destroy(gameObject);

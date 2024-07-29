@@ -7,6 +7,7 @@ public class AsteroidSpawner : MonoBehaviour
 {
     public Transform destroyer;
     public GameObject[] asteroidPrefab;
+
     public Transform[] spawnpoints;
     public float spawnInterval = 1f;
     public float fallSpeed = 2f;
@@ -49,10 +50,10 @@ public class AsteroidSpawner : MonoBehaviour
         asteroid.destroyer = destroyer;
     }
 
-    void RotateSpawner()
-    {
-        // Rotate the spawner parent object to a new random direction
-        float angle = Random.Range(0f, 360f);
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-    }
+    // void RotateSpawner()
+    // {
+    //     // Rotate the spawner parent object to a new random direction
+    //     float angle = Random.Range(0f, 360f);
+    //     transform.rotation = Quaternion.Euler(0, 0, angle);
+    // }
 }

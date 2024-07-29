@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class Astronaut : MonoBehaviour, IDamagable
@@ -19,6 +20,11 @@ public class Astronaut : MonoBehaviour, IDamagable
     private int maxLife = 3;
     private int life;
 
+    // Bullet and reload variables
+    public int StartBullets = 100;
+    private int currentBullets;
+
+    public TMP_Text bulletCount;
 
     public event EventHandler<OnDeathEventArgs> OnDeathAction;
     public class OnDeathEventArgs : EventArgs
@@ -35,12 +41,16 @@ public class Astronaut : MonoBehaviour, IDamagable
         currentHealth = maxHealth;
         life = maxLife;
 
+        // Initialize bullet count
+        currentBullets = StartBullets;
+
         gameInput.OnShootAction += GameInput_OnShootAction;
     }
 
     private void GameInput_OnShootAction(object sender, EventArgs e)
     {
         Shoot();
+
     }
 
     private void Update() {
@@ -48,6 +58,7 @@ public class Astronaut : MonoBehaviour, IDamagable
         Die();
         //Destroy(gameObject);
      }   
+     bulletCount.text = currentBullets.ToString();
     }
     private void FixedUpdate() {
         HandleMovement();
@@ -101,6 +112,7 @@ public class Astronaut : MonoBehaviour, IDamagable
 
     void Shoot()
     {
+        currentBullets--;
         Vector3 cursorWorldPosition;
         if (gameInput.GetActiveGameDevice() == GameInput.GameDevice.Gamepad)
         {
@@ -138,5 +150,18 @@ public class Astronaut : MonoBehaviour, IDamagable
         }
         currentHealth = maxHealth;
         life--;
+    }
+
+    public void AddBullet(int numBullet){
+        currentBullets += numBullet;
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Bullet_PowerUp"){
+            AddBullet(20);
+            Destroy(other.gameObject);
+        }
     }
 }
