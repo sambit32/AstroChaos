@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 <<<<<<<< HEAD:Assets/Scripts/ScriptableObjects/Score.asset.meta
+<<<<<<< HEAD
+guid: e92ee243898799748b5b72da5fc7f3a9
+=======
 guid: 9fbcb1e620f6df342ae677c8a10e0691
+>>>>>>> c98f0e23a0f4f2f617a4ca3e2c02f99cbb6d9a75
 NativeFormatImporter:
 ========
 guid: 53aaecb7394544d40a744cd8c5f9a1dc

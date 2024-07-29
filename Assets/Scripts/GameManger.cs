@@ -47,6 +47,7 @@ public class GameManger : MonoBehaviour
         astroidSpawner.SetActive(true);
         controlsNarrator.gameObject.SetActive(false);
         StartTimer();
+        Time.timeScale = 1;
     }
 
     public void StopGame()
@@ -54,7 +55,8 @@ public class GameManger : MonoBehaviour
         gameON = false;
         astroidSpawner.SetActive(false);
         gameOverUI.gameObject.SetActive(true);
-        gameoverScoreText.text = gameoverScoreText.text + score.value.ToString();
+        gameoverScoreText.text = score.value.ToString();
+        Time.timeScale = 0;
     }
 
     private void StartTimer()

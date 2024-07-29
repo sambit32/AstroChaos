@@ -8,6 +8,7 @@ TagManager:
   - Astronaut
   - Spaceship
   - Astroid
+  - Bullet_PowerUp
   layers:
   - Default
   - TransparentFX
