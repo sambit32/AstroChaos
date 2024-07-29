@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -11,6 +10,10 @@ public class Bullet : MonoBehaviour
     public float speed = 10f;
     private Vector2 moveDirection;
 
+    private void Start()
+    {
+        StartCoroutine(Delete());
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         IDamagable damageAble = collision.gameObject.GetComponentInParent<IDamagable>();
@@ -21,6 +24,7 @@ public class Bullet : MonoBehaviour
             damageAble.Damage(damageAmount);
             GameObject explo = Instantiate(expolFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            SoundManager.Instance.PlaySound(SoundManager.Instance.audioClipRefsSO.explosion, Camera.main.transform.position, 1);
         }
         Destroy(gameObject);
     }
@@ -39,5 +43,11 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(moveDirection * Time.deltaTime);
+    }
+
+    private IEnumerator Delete()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 }

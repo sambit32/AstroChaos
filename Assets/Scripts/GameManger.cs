@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using DialogueEditor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.SceneManagement;
 
 public class GameManger : MonoBehaviour
@@ -12,6 +13,7 @@ public class GameManger : MonoBehaviour
 
 
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject pauseUI;
     [SerializeField] private TextMeshProUGUI gameoverScoreText;
     private float time;
     private bool gameON;
@@ -19,19 +21,30 @@ public class GameManger : MonoBehaviour
     public IntegerVariable score;
 
     public static GameManger Instance;
+
+    private const string playerPrefConversationCheck = "CONVERSATION";
     private void Awake()
     {
         Instance = this;
+        
     }
     void Start()
     {
         score.Reset();
         astroidSpawner.SetActive(false);
         // controlsNarrator.gameObject.SetActive(false);
-        stroyNarrator.gameObject.SetActive(true);
-        ConversationManager.Instance.StartConversation(stroyNarrator);
+        if(!PlayerPrefs.HasKey(playerPrefConversationCheck))
+        {
+            stroyNarrator.gameObject.SetActive(true);
+            ConversationManager.Instance.StartConversation(stroyNarrator);
+            gameON = false;
+            SetPlayerPref();
+            return;
+        }
+        StartGame();
         // controlsNarrator.gameObject.SetActive(true);
-        gameON = false;
+        
+
     }
 
     private void Update()
@@ -50,11 +63,11 @@ public class GameManger : MonoBehaviour
     public void StartGame()
     {
         score.value = 0;
-        gameOverUI.gameObject.SetActive(false);
+        StartTimer();
+        //gameOverUI.gameObject.SetActive(false);
         astroidSpawner.SetActive(true);
         stroyNarrator.gameObject.SetActive(false);
-        Time.timeScale = 1;
-        StartTimer();
+        
     }
 
     public void StopGame()
@@ -63,7 +76,6 @@ public class GameManger : MonoBehaviour
         astroidSpawner.SetActive(false);
         gameOverUI.gameObject.SetActive(true);
         gameoverScoreText.text = score.value.ToString();
-        Time.timeScale = 0;
     }
 
     private void StartTimer()
@@ -71,6 +83,7 @@ public class GameManger : MonoBehaviour
         time = 0f;
         gameON = true;
     }
+
 
     // public void ControlsNarrator(){
     //     // stroyNarrator.gameObject.SetActive(false);
@@ -83,6 +96,23 @@ public class GameManger : MonoBehaviour
     }
 
     public void Try(){
-        SceneManager.LoadScene("GamePlay");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void SetPlayerPref()
+    {
+        PlayerPrefs.SetInt(playerPrefConversationCheck, 1);
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        pauseUI.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        pauseUI.SetActive(false);
     }
 }

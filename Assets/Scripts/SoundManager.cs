@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     private const string PLAYER_PREFS_SOUND_EFFECTS_VOLUME = "SoundEffectsVolume";
     public static SoundManager Instance {  get; private set; }
-    [SerializeField] private AudioClipRefsSO audioClipRefsSO;
+    [SerializeField] public AudioClipRefsSO audioClipRefsSO;
 
     private float volume = 1f;
 
@@ -26,12 +26,12 @@ public class SoundManager : MonoBehaviour
         PlaySound(audioClipRefsSO.shoot,Camera.main.transform.position, 1);
     }
 
-    private void PlaySound(AudioClip[] audioClipArray, Vector3 position, float volume = 1f)
+    public void PlaySound(AudioClip[] audioClipArray, Vector3 position, float volume = 1f)
     {
         PlaySound(audioClipArray[Random.Range(0, audioClipArray.Length)], position, volume);
     }
 
-    private void PlaySound(AudioClip audioClip, Vector3 position, float volumeMultiplier = 1f)
+    public void PlaySound(AudioClip audioClip, Vector3 position, float volumeMultiplier = 1f)
     {
         AudioSource.PlayClipAtPoint(audioClip, position, volumeMultiplier * volume);
     }

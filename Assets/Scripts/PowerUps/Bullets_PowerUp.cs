@@ -21,6 +21,13 @@ public class Bullets_PowerUp : MonoBehaviour
         rb.velocity = moveDirection * fallSpeed;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Distroyer" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Spaceship")
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag == "Distroyer"){
