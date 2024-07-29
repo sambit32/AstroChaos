@@ -35,7 +35,7 @@ public class Astroids : MonoBehaviour, IDamagable
         if(damageAble != null && other.gameObject.tag == "Spaceship"){
             damageAble.Damage(damageAmount);
         }
-        GameManger.Instance.score.value += 50;
+        GameManger.Instance.score.value += 5;
         Destroy(gameObject);
     }
 

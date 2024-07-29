@@ -36,7 +36,7 @@ public class GameManger : MonoBehaviour
         time += Time.deltaTime;
         if(time >=3)
         {
-            score.value += 5;
+            score.value += 2;
             time = 0;
         }
     }
