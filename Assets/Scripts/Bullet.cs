@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public GameObject expolFX;
     public float damageAmount = 15f;
-
     Rigidbody2D rb;
-    public float bulletSpeed;
 
     public float speed = 10f;
     private Vector2 moveDirection;
@@ -18,6 +17,8 @@ public class Bullet : MonoBehaviour
         if (damageAble != null && collision.gameObject.tag == "Astroid")
         {
             damageAble.Damage(damageAmount);
+            GameObject explo = Instantiate(expolFX, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
         Destroy(gameObject);
     }

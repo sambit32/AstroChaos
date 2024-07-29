@@ -213,8 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc558002f690a1428fbdb041aa7232c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expolFX: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   damageAmount: 15
-  bulletSpeed: 0
   speed: 50
 --- !u!61 &1312131720288800018
 BoxCollider2D:

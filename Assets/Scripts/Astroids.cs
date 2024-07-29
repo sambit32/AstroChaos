@@ -3,6 +3,7 @@ using UnityEngine;
 public class Astroids : MonoBehaviour, IDamagable
 {
     public Transform destroyer;
+    public GameObject expolFX;
     public float maxHealth = 50;
     public float damageAmount = 33.33f;
     float currentHealth;

@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyer: {fileID: 0}
+  expolFX: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   maxHealth: 50
   damageAmount: 33.33
   fallSpeed: 10
