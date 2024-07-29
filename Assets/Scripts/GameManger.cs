@@ -1,11 +1,15 @@
+using System.Security.Cryptography;
 using DialogueEditor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManger : MonoBehaviour
 {
     [SerializeField] private GameObject astroidSpawner;
-    [SerializeField] private NPCConversation controlsNarrator;
+    // [SerializeField] private NPCConversation controlsNarrator;
+    [SerializeField] private NPCConversation stroyNarrator;
+
 
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private TextMeshProUGUI gameoverScoreText;
@@ -23,9 +27,11 @@ public class GameManger : MonoBehaviour
     {
         score.Reset();
         astroidSpawner.SetActive(false);
-        controlsNarrator.gameObject.SetActive(true);
+        // controlsNarrator.gameObject.SetActive(false);
+        stroyNarrator.gameObject.SetActive(true);
+        ConversationManager.Instance.StartConversation(stroyNarrator);
+        // controlsNarrator.gameObject.SetActive(true);
         gameON = false;
-        ConversationManager.Instance.StartConversation(controlsNarrator);
     }
 
     private void Update()
@@ -43,11 +49,12 @@ public class GameManger : MonoBehaviour
 
     public void StartGame()
     {
+        score.value = 0;
         gameOverUI.gameObject.SetActive(false);
         astroidSpawner.SetActive(true);
-        controlsNarrator.gameObject.SetActive(false);
-        StartTimer();
+        stroyNarrator.gameObject.SetActive(false);
         Time.timeScale = 1;
+        StartTimer();
     }
 
     public void StopGame()
@@ -63,5 +70,19 @@ public class GameManger : MonoBehaviour
     {
         time = 0f;
         gameON = true;
+    }
+
+    // public void ControlsNarrator(){
+    //     // stroyNarrator.gameObject.SetActive(false);
+    //     // controlsNarrator.gameObject.SetActive(true);
+    //     ConversationManager.Instance.StartConversation(controlsNarrator);
+    // }
+
+    public void BactToMain(){
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Try(){
+        SceneManager.LoadScene("GamePlay");
     }
 }
