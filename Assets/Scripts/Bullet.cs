@@ -28,6 +28,7 @@ public class Bullet : MonoBehaviour
         }
         Destroy(gameObject);
     }
+    
     /*private void OnCollisionEnter(Collision other) {
         IDamagable damageAble = other.gameObject.GetComponentInParent<IDamagable>();
         if(damageAble != null && other.gameObject.tag == "Astroid"){

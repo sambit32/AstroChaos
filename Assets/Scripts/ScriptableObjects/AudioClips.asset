@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AudioClips
   m_EditorClassIdentifier: 
   shoot: {fileID: 8300000, guid: 3ef5f2ea0a73894488f6adb1c32b7bc9, type: 3}
-  explosion: {fileID: 0}
-  collectPowerUp: {fileID: 0}
+  explosion: {fileID: 8300000, guid: 9169c629ebe2bde4d943245a9c969c40, type: 3}
+  collectPowerUp: {fileID: 8300000, guid: 1cccb43ea75bc0a4a8acd8211832f297, type: 3}

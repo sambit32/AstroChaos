@@ -83,8 +83,6 @@ public class GameManger : MonoBehaviour
         time = 0f;
         gameON = true;
     }
-
-
     // public void ControlsNarrator(){
     //     // stroyNarrator.gameObject.SetActive(false);
     //     // controlsNarrator.gameObject.SetActive(true);

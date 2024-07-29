@@ -25,6 +25,7 @@ public class Bullets_PowerUp : MonoBehaviour
     {
         if (collision.gameObject.tag == "Distroyer" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Spaceship")
         {
+            SoundManager.Instance.PlaySound(SoundManager.Instance.audioClipRefsSO.collectPowerUp, Camera.main.transform.position, 1);
             Destroy(gameObject);
         }
     }
