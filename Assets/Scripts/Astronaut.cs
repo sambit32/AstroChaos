@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Astronaut : MonoBehaviour, IDamagable
@@ -18,6 +16,16 @@ public class Astronaut : MonoBehaviour, IDamagable
     public GameObject bulletPrefab;
     public Transform bulletSpawner;
 
+    private int maxLife = 3;
+    private int life;
+
+
+    public event EventHandler<OnDeathEventArgs> OnDeathAction;
+    public class OnDeathEventArgs : EventArgs
+    {
+        public int life;
+    }
+
     void Start()
     {
         gameInput = GameInput.Instance;
@@ -25,6 +33,7 @@ public class Astronaut : MonoBehaviour, IDamagable
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
+        life = maxLife;
 
         gameInput.OnShootAction += GameInput_OnShootAction;
     }
@@ -36,7 +45,8 @@ public class Astronaut : MonoBehaviour, IDamagable
 
     private void Update() {
      if(currentHealth<=0){
-        Destroy(gameObject);
+        Die();
+        //Destroy(gameObject);
      }   
     }
     private void FixedUpdate() {
@@ -112,5 +122,21 @@ public class Astronaut : MonoBehaviour, IDamagable
 
         // Set the bullet's move direction
         bullet.GetComponent<Bullet>().SetMoveDirection(direction);
+    }
+
+    public void Die()
+    {
+        OnDeathAction?.Invoke(this, new OnDeathEventArgs
+        {
+            life = life - 1
+        });
+
+        if (life == 1)
+        {
+            GameManger.Instance.StopGame();
+            return;
+        }
+        currentHealth = maxHealth;
+        life--;
     }
 }

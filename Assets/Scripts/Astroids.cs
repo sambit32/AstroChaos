@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Astroids : MonoBehaviour, IDamagable
@@ -36,6 +34,7 @@ public class Astroids : MonoBehaviour, IDamagable
         if(damageAble != null && other.gameObject.tag == "Spaceship"){
             damageAble.Damage(damageAmount);
         }
+        GameManger.Instance.score.value += 50;
         Destroy(gameObject);
     }
 
